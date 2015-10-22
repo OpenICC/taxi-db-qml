@@ -186,50 +186,38 @@ ApplicationWindow {
     }
 
     toolBar: ToolBar {
-        id: mainToolBar
+        implicitWidth: root.width
 
-        RowLayout {
-            //height: parent.height
+        Rectangle {
+            id: banner
             anchors.fill: parent
+            color: "transparent"
 
-            Rectangle {
-                id: banner
-                //height: parent.height
-                anchors.fill: parent
-                color: "transparent"
+            Text {
+                id: bannerLeftText
+                width: parent.width/2
+                height: parent.height/2
 
-                Item {
-                    id: textItem
-                    anchors.fill: parent
+                anchors.right: parent.horizontalCenter
+                anchors.verticalCenter: parent.verticalCenter
+                color: "steelblue"
+                fontSizeMode: Text.Fit // does no effect
+                horizontalAlignment: Text.AlignRight
+                font.bold: true
+                text: "<font size=\"5\">OpenICC </font>"
+            }
+            Text {
+                id: bannerRightText
+                anchors.left: bannerLeftText.right
+                anchors.verticalCenter: parent.verticalCenter
+                color: "#000000"
+                font.bold: true
+                text: "<font size=\"5\"> Taxi DB</font>"
+            }
 
-                    Text {
-                        id: bannerText
-                        width: parent.width/2
-                        height: parent.height/2
-
-                        anchors.centerIn: mainToolBar
-                        anchors.right: parent.horizontalCenter
-                        anchors.verticalCenter: parent.verticalCenter
-                        color: "steelblue"
-                        fontSizeMode: Text.Fit // does no effect
-                        horizontalAlignment: Text.AlignRight
-                        font.bold: true
-                        text: "<font size=\"5\">OpenICC </font>"
-                    }
-                    Text {
-                        id: qtText
-                        anchors.centerIn: mainToolBar
-                        anchors.left: bannerText.right
-                        anchors.verticalCenter: parent.verticalCenter
-                        color: "#000000"
-                        font.bold: true
-                        text: "<font size=\"5\"> Taxi DB</font>"
-                    }
-                }
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: setPage(0)
-                }
+            MouseArea {
+                anchors.fill: banner
+                onClicked: setPage(0)
             }
         }
     }

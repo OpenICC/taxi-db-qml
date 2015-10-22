@@ -81,6 +81,7 @@ Rectangle {
                         setPage(1)
                         mnft = short_name
                         long_mnft = long_name
+                        deviceList.load()
                     }
                 }
             }

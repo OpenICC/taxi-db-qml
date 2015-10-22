@@ -49,6 +49,7 @@ ApplicationWindow {
     //property string pageTwoText: "Page 2"
     property string mnft
     property string long_mnft
+    property string profile_id
     VisualItemModel {
         id: pagesModel
 
@@ -65,67 +66,28 @@ ApplicationWindow {
             id: twoPage
             color: "transparent"
 
-            // highlight from mnft page
-            Rectangle {
+            DeviceListView {
+                id: deviceList
+            }
+        }
+        Rectangle {
+            width: pages.width
+            height: pages.height
+            color: "transparent"
+            TextArea { // our content
                 width: parent.width
-                height: h
-                radius: h/2
-                color: "steelblue"
-            }
-            Rectangle {
-                anchors.left: parent.left
-                width: 2*h
-                height: h
-                radius: (h-h/8)/3
-                color: "steelblue"
-            }
-            Rectangle {
-                id: mnftBackgroundRect
-                width:  parent.width - h/4
-                anchors.top: parent.top
-                anchors.topMargin: h/8
-                anchors.left: parent.left
-                anchors.leftMargin: h/8
-                height: h - h/4
-                color: "lightsteelblue"
-                radius: (h-h/8)/3
-            }
-            Rectangle {
-                id: mnftBackgroundLeftRect
-                width:  h
-                anchors.top: parent.top
-                anchors.topMargin: h/8
-                anchors.left: parent.left
-                height: h - h/4
-                color: "lightsteelblue"
-            }
-            Text {
-                id: mnftItemText
-                anchors.verticalCenter: mnftBackgroundRect.verticalCenter
-                anchors.topMargin: h/8
-                anchors.leftMargin: h
-                font.bold: true
-                text: "  " + long_mnft
-            }
-            /*TextArea {
-                id: textArea
-                Accessible.name: "document"
+                height: parent.height - font.pixelSize * 3 // keep some space for the button
+
+                Accessible.name: "profile link"
                 backgroundVisible: false // keep the area visually simple
                 frameVisible: false      // keep the area visually simple
-                anchors.fill: parent
-                text: pageTwoText
-                textFormat: Qt.RichText
-                wrapMode: TextEdit.Wrap
-                readOnly: true
-            }*/
-            MouseArea {
-                id: backMouseArea
-                width: parent.width
-                height: h
-                onClicked: {
-                    if(pages.ListView.isCurrentItem)
-                        pagesItem = -1
-                    setPage(0)
+
+                textFormat: Qt.RichText // Html
+                textMargin: font.pixelSize
+                readOnly: true // obviously no edits
+                text: "<a href=\"http://icc.opensuse.org/profile/" + profile_id + "/0/profile.icc\">profile.icc</a>"
+                onLinkActivated: {
+                    Qt.openUrlExternally(link)
                 }
             }
         }
@@ -162,7 +124,7 @@ ApplicationWindow {
         shortcut: "F1"
         //iconSource: "qrc:/images/" + dpiName + "/ic_action_about.png"
         iconName: "about"
-        onTriggered: setPage(2)
+        onTriggered: setPage(3)
     }
     Action {
         id: quitAction
@@ -209,6 +171,7 @@ ApplicationWindow {
             Text {
                 id: bannerRightText
                 anchors.left: bannerLeftText.right
+                anchors.top: bannerLeftText.top
                 anchors.verticalCenter: parent.verticalCenter
                 color: "#000000"
                 font.bold: true

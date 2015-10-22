@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/IccTaxiDB.qml</file>
+        <file>qml/ManufacturerListView.qml</file>
+        <file>qml/About.qml</file>
+    </qresource>
+</RCC>

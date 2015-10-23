@@ -10,3 +10,6 @@ DISTFILES += \
     qml/ManufacturerListView.qml \
     qml/About.qml \
     qml/ManufacturerListView.qml
+
+# bring browser in foreground on Android
+TARGET.CAPABILITY += SwEvent

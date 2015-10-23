@@ -85,9 +85,11 @@ ApplicationWindow {
                 textFormat: Qt.RichText // Html
                 textMargin: font.pixelSize
                 readOnly: true // obviously no edits
-                text: "<a href=\"http://icc.opensuse.org/profile/" + profile_id + "/0/profile.icc\">profile.icc</a>"
+                text: "<a href=\"http://icc.opensuse.org/profile/" + profile_id + "/0/profile.icc\" type=\"vnd/iccprofile\">http://icc.opensuse.org/profile/" + profile_id + "/0/profile.icc</a>"
                 onLinkActivated: {
                     Qt.openUrlExternally(link)
+                    //QDesktopServices:openUrl(link) is not defined
+                    statusText = "opening adress externally"
                 }
             }
         }

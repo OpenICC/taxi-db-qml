@@ -29,6 +29,11 @@ Rectangle {
                       "<br \>Copyright (c) 2015 Kai-Uwe Behrmann<br \>" +
                       qsTr("All Rights reserved.") +
                       "<br \><a href=\"http://www.behrmann.name\">www.behrmann.name</p></body></html>"
+        onLinkActivated: {
+            Qt.openUrlExternally(link)
+            //QDesktopServices:openUrl(link)
+            statusText = "opening adress externally"
+        }
     }
 
     Action {

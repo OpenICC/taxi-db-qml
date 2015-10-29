@@ -1,6 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Dialogs 1.2
-import QtQuick.Controls 1.3
+import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.0
 import QtQuick.Window 2.2
 
@@ -87,9 +87,13 @@ ApplicationWindow {
                 readOnly: true // obviously no edits
                 text: "<a href=\"http://icc.opensuse.org/profile/" + profile_id + "/0/profile.icc\" type=\"vnd/iccprofile\">http://icc.opensuse.org/profile/" + profile_id + "/0/profile.icc</a>"
                 onLinkActivated: {
-                    Qt.openUrlExternally(link)
+                    setBusyTimer.start()
+                    if(Qt.openUrlExternally(link))
+                        statusText = "Launched app for " + link
+                    else
+                        statusText = "Launching external app failed"
                     //QDesktopServices:openUrl(link) is not defined
-                    statusText = "opening adress externally"
+                    unsetBusyTimer.start()
                 }
             }
         }

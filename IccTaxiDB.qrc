@@ -4,5 +4,6 @@
         <file>qml/DeviceListView.qml</file>
         <file>qml/ManufacturerListView.qml</file>
         <file>qml/About.qml</file>
+        <file>qml/ProfileView.qml</file>
     </qresource>
 </RCC>

@@ -86,8 +86,8 @@ Rectangle {
                     onClicked: {
                         view.currentIndex = index
                         statusText = device_model
-                        setPage(2)
                         profile_id = oid
+                        setPage(2)
                     }
                 }
             }
@@ -138,7 +138,15 @@ Rectangle {
                                      "profile_description" : jsonObject[index].profile_description[0],
                                      "GAMUT_volume" : jsonObject[index].GAMUT_volume,
                                      "MEASUREMENT_device" : jsonObject[index].MEASUREMENT_device,
-                                     "oid" : jsonObject[index]._id.$oid
+                                     "oid" : jsonObject[index]._id.$oid,
+                                     "red_x" : jsonObject[index].EDID_red_x,
+                                     "red_y" : jsonObject[index].EDID_red_y,
+                                     "green_x" : jsonObject[index].EDID_green_x,
+                                     "green_y" : jsonObject[index].EDID_green_y,
+                                     "blue_x" : jsonObject[index].EDID_blue_x,
+                                     "blue_y" : jsonObject[index].EDID_blue_y,
+                                     "white_x" : jsonObject[index].EDID_white_x,
+                                     "white_y" : jsonObject[index].EDID_white_y
                                  });
             }
         }

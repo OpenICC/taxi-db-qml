@@ -1,6 +1,6 @@
 TEMPLATE = app
 
-QT += quick qml
+QT += quick qml webengine
 SOURCES += main.cpp
 RESOURCES += \
     IccTaxiDB.qrc

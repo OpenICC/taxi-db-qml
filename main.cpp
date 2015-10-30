@@ -5,6 +5,7 @@
 #include <QtQml/QQmlContext>
 #include <QtQuick/QQuickWindow>
 #include <QtCore/QUrl>
+#include <QtWebEngine/qtwebengineglobal.h>
 #include <QDebug>
 
 int main(int argc, char* argv[])
@@ -14,6 +15,8 @@ int main(int argc, char* argv[])
     app.setApplicationDisplayName(QString("ICC Taxi DB"));
     app.setApplicationVersion("0.0.2");
     app.setOrganizationName(QString("oyranos.com"));
+
+    QtWebEngine::initialize();
 
     foreach (QScreen * screen, QGuiApplication::screens())
         screen->setOrientationUpdateMask(Qt::LandscapeOrientation | Qt::PortraitOrientation |

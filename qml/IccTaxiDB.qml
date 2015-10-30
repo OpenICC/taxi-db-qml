@@ -3,7 +3,7 @@ import QtQuick.Dialogs 1.2
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.0
 import QtQuick.Window 2.2
-
+import QtWebEngine 1.1
 
 ApplicationWindow {
     id:root
@@ -21,6 +21,13 @@ ApplicationWindow {
     {
         setBusyTimer.start()
         //statusText = "page: " + page + " "  + pagesIndex + " " + pages.currentIndex
+
+        if(page === 2)
+        {
+            weburl = "http://icc.opensuse.org/profile/" + profile_id
+            webview.url = weburl
+            statusText = weburl
+        }
 
         if(pagesIndex === page)
             pagesIndex = -1 // delesect list item to get properly back
@@ -50,6 +57,7 @@ ApplicationWindow {
     property string mnft
     property string long_mnft
     property string profile_id
+    property string weburl
     VisualItemModel {
         id: pagesModel
 
@@ -74,6 +82,7 @@ ApplicationWindow {
             width: pages.width
             height: pages.height
             color: "transparent"
+
             TextArea { // our content
                 width: parent.width
                 height: parent.height - font.pixelSize * 3 // keep some space for the button
@@ -95,6 +104,11 @@ ApplicationWindow {
                     //QDesktopServices:openUrl(link) is not defined
                     unsetBusyTimer.start()
                 }
+            }
+            WebEngineView {
+                id: webview
+                url: weburl
+                anchors.fill: parent
             }
         }
         Rectangle {

@@ -3,12 +3,12 @@ import QtQuick.Dialogs 1.2
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.0
 import QtQuick.Window 2.2
-import QtWebEngine 1.1
+import IccOpen 1.0
 
 ApplicationWindow {
     id:root
     width: 360
-    height: 640
+    height: 600
     visible: true
 
     property string title: "Liste"
@@ -21,13 +21,6 @@ ApplicationWindow {
     {
         setBusyTimer.start()
         //statusText = "page: " + page + " "  + pagesIndex + " " + pages.currentIndex
-
-        if(page === 2)
-        {
-            weburl = "http://icc.opensuse.org/profile/" + profile_id
-            webview.url = weburl
-            statusText = weburl
-        }
 
         if(pagesIndex === page)
             pagesIndex = -1 // delesect list item to get properly back
@@ -57,7 +50,6 @@ ApplicationWindow {
     property string mnft
     property string long_mnft
     property string profile_id
-    property string weburl
     VisualItemModel {
         id: pagesModel
 
@@ -84,6 +76,7 @@ ApplicationWindow {
             color: "transparent"
 
             TextArea { // our content
+                id: textArea
                 width: parent.width
                 height: parent.height - font.pixelSize * 3 // keep some space for the button
 
@@ -105,12 +98,27 @@ ApplicationWindow {
                     unsetBusyTimer.start()
                 }
             }
-            WebEngineView {
-                id: webview
-                url: weburl
-                anchors.fill: parent
+
+
+            Action {
+                id: openIccAction
+                text: qsTr("View")
+                shortcut: "Enter"
+                onTriggered: {
+                    profile.fileName = "http://icc.opensuse.org/profile/" + profile_id + "/0/profile.icc"
+                    statusText = "opening " + profile.fileName
+                }
+            }
+            Button { // finish button
+                text: qsTr("View")
+                width: parent.width - textArea.font.pixelSize * 2 // make this button big
+                x: parent.width/2 - width/2 // place in the middle
+                y: parent.height - textArea.font.pixelSize * 3 // place below aboutTextArea
+                action: openIccAction
             }
         }
+
+
         Rectangle {
             id: aboutPage
             width: pages.width
@@ -248,6 +256,13 @@ ApplicationWindow {
        running: isbusy
        opacity: 0.85
        Layout.alignment: Qt.AlignLeft
+    }
+
+    IccOpen {
+        id: profile
+        onFileNameChanged: {
+            statusText = qsTr("Loaded") + " " + profile.fileName
+        }
     }
 }
 

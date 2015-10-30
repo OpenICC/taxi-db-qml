@@ -99,6 +99,36 @@ ApplicationWindow {
                 }
             }
 
+            Canvas {
+                id:canvas
+                width: parent.width
+                height: parent.height - textArea.font.pixelSize * 3
+                property color strokeStyle:  Qt.darker(fillStyle, 1.4)
+                property color fillStyle: "#b40000" // red
+                property int d: Math.min( width, height )
+                antialiasing: true
+
+                onPaint: {
+                    var ctx = canvas.getContext('2d')
+                    ctx.save()
+                    ctx.clearRect(0, 0, canvas.width, canvas.height)
+                    ctx.strokeStyle = canvas.strokeStyle
+                    ctx.fillStyle = canvas.fillStyle
+                    ctx.lineWidth = 5
+
+                    //! triangle begin
+                    ctx.beginPath()
+                    ctx.moveTo(0,0)
+                    ctx.lineTo(0,d)
+                    ctx.lineTo(d,d)
+                    ctx.lineTo(0,0)
+                    ctx.closePath()
+                    //! triangle end
+                    ctx.fill()
+                    ctx.stroke()
+                    ctx.restore()
+                }
+            }
 
             Action {
                 id: openIccAction

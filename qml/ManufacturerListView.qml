@@ -92,7 +92,6 @@ Rectangle {
             var xhr = new XMLHttpRequest();
 
             xhr.open("GET","http://icc.opensuse.org/manufacturers",true);
-            //xhr.open("GET", "http://localhost:5000/manufacturers", true);
             xhr.onreadystatechange = function()
             {
                 if ( xhr.readyState == xhr.DONE)

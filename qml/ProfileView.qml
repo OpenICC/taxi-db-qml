@@ -6,6 +6,10 @@ Rectangle {
     height: parent.height
     color: "transparent"
 
+    property int repaint: 0
+    onRepaintChanged: canvas.requestPaint()
+    property string html
+
     TextArea { // our content
         id: textArea
         width: parent.width
@@ -18,29 +22,43 @@ Rectangle {
         textFormat: Qt.RichText // Html
         textMargin: font.pixelSize
         readOnly: true // obviously no edits
-        text: "<a href=\"http://icc.opensuse.org/profile/" + profile_id + "/0/profile.icc\" type=\"vnd/iccprofile\">http://icc.opensuse.org/profile/" + profile_id + "/0/profile.icc</a>"
+        text: html
         onLinkActivated: {
             setBusyTimer.start()
             if(Qt.openUrlExternally(link))
                 statusText = "Launched app for " + link
             else
                 statusText = "Launching external app failed"
-            //QDesktopServices:openUrl(link) is not defined
             unsetBusyTimer.start()
         }
     }
 
+    property bool showJson: false
+    function parseMyJson( json ) {
+        html =
+            long_mnft + " : " + device_name + "<br />
+            <small><a href=\"http://icc.opensuse.org/profile/" + profile_id + "/0/profile.icc\" type=\"vnd/iccprofile\">
+            http://icc.opensuse.org/profile/" + profile_id + "/0/profile.icc</a><br /><div style='color: black; font-style: italic'>"
+
+        if(showJson)
+        for (var obj in json) {
+            html += obj + ": " + json[obj] + "<br/>"
+        }
+        html += "</div></small>"
+    }
+    property int tm: textArea.font.pixelSize * 3 // top margin
+    property int sm: textArea.font.pixelSize // side margin
+    property int head: if(textArea.font.pixelSize * 12 > canvas.height) tm; else 2*tm
+    property int d: Math.min( canvas.width - tm-2*sm, canvas.height - head-2*sm )
+    property int diag_top: canvas.height - head -2*sm - d
     Canvas {
-        id:canvas
+        id: canvas
         width: parent.width
         height: parent.height - textArea.font.pixelSize * 3
         property color strokeStyle:  Qt.darker(fillStyle, 1.4)
         property color fillStyle: "#b4b4b4" // gray
 
-        property int tm: textArea.font.pixelSize * 3 // top margin
-        property int sm: textArea.font.pixelSize // side margin
-        property int d: Math.min( width - sm, height - tm )
-        property int lineWidth: textArea.font.pixelSize / 4
+        property real lineWidth: textArea.font.pixelSize / 5.0
         antialiasing: true
 
         onPaint: {
@@ -49,20 +67,49 @@ Rectangle {
             ctx.clearRect(0, 0, canvas.width, canvas.height)
             ctx.strokeStyle = canvas.strokeStyle
             ctx.fillStyle = canvas.fillStyle
-            ctx.lineWidth = lineWidth
-            ctx.globalAlpha = 0.7
+            ctx.lineWidth = lineWidth/2.0
+            ctx.translate( tm+sm/2, height-d-3*sm/2 )
+            ctx.globalAlpha = 0.3
 
             //! triangle begin
             ctx.beginPath()
-            ctx.moveTo(sm,tm)
-            ctx.lineTo(sm,d)
+            ctx.moveTo(0,0)
+            ctx.lineTo(0,d)
             ctx.lineTo(d,d)
-            ctx.lineTo(sm,tm)
+            ctx.lineTo(0,0)
             ctx.closePath()
             //! triangle end
-            ctx.fill()
+            if(showJson === false)
+                ctx.globalAlpha = 1
             ctx.stroke()
+
+            //! EDID triangle begin
+            ctx.lineWidth = lineWidth
+            ctx.beginPath()
+            ctx.moveTo( red_x*d, d-red_y*d )
+            ctx.lineTo( green_x*d, d-green_y*d )
+            ctx.lineTo( blue_x*d, d-blue_y*d )
+            ctx.closePath()
+            //! EDID triangle end
+
+            ctx.globalAlpha = 0.3
+            ctx.fill()
+            ctx.strokeStyle = "black"
+            if(showJson === false)
+                ctx.globalAlpha = 1
+            else
+                ctx.globalAlpha = 0.5
+            ctx.stroke()
+
+            ctx.font = textArea.font.pixelSize + 'px sans-serif vertical-lr'
+            if(showJson === false)
+                ctx.fillStyle = "black"
+            ctx.fillText( "CIE*x", d-tm, d+sm )
+            ctx.fillText( "CIE*y", sm/4-tm, sm )
+
             ctx.restore()
+
+            parseMyJson( profileJsonObject )
         }
     }
 
@@ -75,12 +122,24 @@ Rectangle {
             statusText = "opening " + profile.fileName
         }
     }
-    Button { // finish button
-        text: qsTr("View")
-        width: parent.width - textArea.font.pixelSize * 2 // make this button big
-        x: parent.width/2 - width/2 // place in the middle
+    Button { // view button
+        id: viewButton
+        text: qsTr("Open")
+        width: parent.width - textArea.font.pixelSize * 2 - jsonButton.width // make this button big
+        x: (parent.width - width)/2 - jsonButton.width/2
         y: parent.height - textArea.font.pixelSize * 3 // place below aboutTextArea
         action: openIccAction
+    }
+    Button { // JSON button
+        id: jsonButton
+        text: showJson ? qsTr("Show Less") : qsTr("Show More")
+        width: textArea.font.pixelSize * 9 // make this button big
+        anchors.left: viewButton.right
+        anchors.top: viewButton.top
+        onClicked: {
+            showJson = !showJson
+            canvas.requestPaint()
+        }
     }
 }
 

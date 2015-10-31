@@ -20,7 +20,6 @@ ApplicationWindow {
     function setPage(page)
     {
         setBusyTimer.start()
-        //statusText = "page: " + page + " "  + pagesIndex + " " + pages.currentIndex
 
         if(pagesIndex === page)
             pagesIndex = -1 // delesect list item to get properly back
@@ -46,10 +45,31 @@ ApplicationWindow {
         //interactive: false
     }
 
-    //property string pageTwoText: "Page 2"
     property string mnft
     property string long_mnft
     property string profile_id
+    property string device_name
+    property string measurement_device
+    property real gamut_volume
+    property real red_x
+    property real red_y
+    property real green_x
+    property real green_y
+    property real blue_x
+    property real blue_y
+    property real white_x
+    property real white_y
+    property var profileJsonObject
+    // be slow with updating to spot differences
+    Timer {
+        id: updateProfileViewTimer
+        triggeredOnStart: false
+        interval: 500
+        onTriggered:
+            profileView.repaint = !profileView.repaint
+    }
+    onProfile_idChanged: updateProfileViewTimer.start()
+
     VisualItemModel {
         id: pagesModel
 
@@ -74,7 +94,7 @@ ApplicationWindow {
             width: pages.width
             height: pages.height
             color: "transparent"
-            ProfileView {}
+            ProfileView { id: profileView }
         }
 
 
@@ -167,7 +187,7 @@ ApplicationWindow {
 
             MouseArea {
                 anchors.fill: banner
-                onClicked: setPage(0)
+                onClicked: setPage(pagesIndex-1)
             }
         }
     }

@@ -13,7 +13,6 @@ Rectangle {
 
     TextArea { // our content
         id: textArea
-        //anchors.centerIn: parent
         width: parent.width
         height: parent.height - font.pixelSize * 3 // keep some space for the button
 

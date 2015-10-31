@@ -85,8 +85,20 @@ Rectangle {
                     anchors.fill: parent;
                     onClicked: {
                         view.currentIndex = index
-                        statusText = device_model
+                        statusText = " <b>" + device_model + "</b> " + profile_description.replace(device_model,"") + " <i>" + GAMUT_volume + "</i>"
                         profile_id = oid
+                        device_name = device_model
+                        measurement_device = MEASUREMENT_device
+                        gamut_volume = GAMUT_volume
+                        red_x = redX
+                        red_y = redY
+                        green_x = greenX
+                        green_y = greenY
+                        blue_x = blueX
+                        blue_y = blueY
+                        white_x = whiteX
+                        white_y = whiteY
+                        profileJsonObject = jsonObject
                         setPage(2)
                     }
                 }
@@ -97,8 +109,7 @@ Rectangle {
             listModel.clear();
             var xhr = new XMLHttpRequest();
 
-            xhr.open("GET","http://icc.opensuse.org/devices/" + mnft,true);
-            //xhr.open("GET", "http://localhost:5000/manufacturers", true);
+            xhr.open("GET","http://icc.opensuse.org/devices/" + mnft,true)
             xhr.onreadystatechange = function()
             {
                 if ( xhr.readyState == xhr.DONE)
@@ -106,7 +117,7 @@ Rectangle {
                     if ( xhr.status == 200)
                     {
                         statusText = "down loaded"
-                        var jsonObject = JSON.parse( xhr.responseText );
+                        var jsonObject = JSON.parse( xhr.responseText )
                         loaded(jsonObject)
                     } else
                         statusText = "HTTP Status: " + xhr.status
@@ -139,14 +150,15 @@ Rectangle {
                                      "GAMUT_volume" : jsonObject[index].GAMUT_volume,
                                      "MEASUREMENT_device" : jsonObject[index].MEASUREMENT_device,
                                      "oid" : jsonObject[index]._id.$oid,
-                                     "red_x" : jsonObject[index].EDID_red_x,
-                                     "red_y" : jsonObject[index].EDID_red_y,
-                                     "green_x" : jsonObject[index].EDID_green_x,
-                                     "green_y" : jsonObject[index].EDID_green_y,
-                                     "blue_x" : jsonObject[index].EDID_blue_x,
-                                     "blue_y" : jsonObject[index].EDID_blue_y,
-                                     "white_x" : jsonObject[index].EDID_white_x,
-                                     "white_y" : jsonObject[index].EDID_white_y
+                                     "redX" : jsonObject[index].EDID_red_x,
+                                     "redY" : jsonObject[index].EDID_red_y,
+                                     "greenX" : jsonObject[index].EDID_green_x,
+                                     "greenY" : jsonObject[index].EDID_green_y,
+                                     "blueX" : jsonObject[index].EDID_blue_x,
+                                     "blueY" : jsonObject[index].EDID_blue_y,
+                                     "whiteX" : jsonObject[index].EDID_white_x,
+                                     "whiteY" : jsonObject[index].EDID_white_y,
+                                     "jsonObject" : jsonObject[index]
                                  });
             }
         }

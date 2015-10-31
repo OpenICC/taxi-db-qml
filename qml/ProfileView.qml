@@ -35,8 +35,12 @@ Rectangle {
         width: parent.width
         height: parent.height - textArea.font.pixelSize * 3
         property color strokeStyle:  Qt.darker(fillStyle, 1.4)
-        property color fillStyle: "#b40000" // red
-        property int d: Math.min( width, height )
+        property color fillStyle: "#b4b4b4" // gray
+
+        property int tm: textArea.font.pixelSize * 3 // top margin
+        property int sm: textArea.font.pixelSize // side margin
+        property int d: Math.min( width - sm, height - tm )
+        property int lineWidth: textArea.font.pixelSize / 4
         antialiasing: true
 
         onPaint: {
@@ -45,14 +49,15 @@ Rectangle {
             ctx.clearRect(0, 0, canvas.width, canvas.height)
             ctx.strokeStyle = canvas.strokeStyle
             ctx.fillStyle = canvas.fillStyle
-            ctx.lineWidth = 5
+            ctx.lineWidth = lineWidth
+            ctx.globalAlpha = 0.7
 
             //! triangle begin
             ctx.beginPath()
-            ctx.moveTo(0,0)
-            ctx.lineTo(0,d)
+            ctx.moveTo(sm,tm)
+            ctx.lineTo(sm,d)
             ctx.lineTo(d,d)
-            ctx.lineTo(0,0)
+            ctx.lineTo(sm,tm)
             ctx.closePath()
             //! triangle end
             ctx.fill()

@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
     QGuiApplication app(argc, argv);
     app.setApplicationName(QString("OpenICC Taxi DB Viewer"));
     app.setApplicationDisplayName(QString("ICC Taxi DB"));
-    app.setApplicationVersion("0.0.2");
+    app.setApplicationVersion("0.0.3");
     app.setOrganizationName(QString("oyranos.com"));
 
     foreach (QScreen * screen, QGuiApplication::screens())

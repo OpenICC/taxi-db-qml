@@ -15,7 +15,7 @@ Rectangle {
             anchors.bottomMargin: 0
             height: parent.height
             width: parent.width
-            snapMode: ListView.SnapOneItem
+            snapMode: ListView.SnapToItem
             highlightRangeMode: ListView.ApplyRange
             highlightMoveDuration: 250
             keyNavigationWraps: true

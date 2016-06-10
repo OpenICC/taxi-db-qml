@@ -39,7 +39,7 @@ Rectangle {
             anchors.top: mnftRect.bottom
             height: parent.height - h
             width: parent.width
-            snapMode: ListView.SnapOneItem
+            snapMode: ListView.SnapToItem
             highlightRangeMode: ListView.ApplyRange
             highlightMoveDuration: 250
             keyNavigationWraps: true

@@ -156,6 +156,7 @@ ApplicationWindow {
 
     toolBar: ToolBar {
         implicitWidth: root.width
+        implicitHeight: h*2
 
         Rectangle {
             id: banner

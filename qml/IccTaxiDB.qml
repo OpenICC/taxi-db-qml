@@ -1,3 +1,22 @@
+/** @file IccTaxiDB.qml
+ *
+ *  OpenICC Taxi DB is a viewer for the online ICC monitor profile DB
+ *  http://icc.opensuse.org
+ *
+ *  @par Copyright:
+ *            2015 (C) Kai-Uwe Behrmann
+ *            All Rights reserved.
+ *
+ *  @par License:
+ *            AGPL-3.0 <https://opensource.org/licenses/AGPL-3.0>
+ *  @since    2015/10/22
+ *
+ * -----------------------------------------------------------------------------
+ *
+ * main application window
+ *
+ */
+
 import QtQuick 2.4
 import QtQuick.Dialogs 1.2
 import QtQuick.Controls 1.4

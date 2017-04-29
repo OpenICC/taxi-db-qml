@@ -1,3 +1,19 @@
+/** @file iccopen.h
+ *
+ *  OpenICC Taxi DB is a color profile DB browser.
+ *
+ *  @par Copyright:
+ *            2015 (C) Kai-Uwe Behrmann
+ *            All Rights reserved.
+ *
+ *  @par License:
+ *            AGPL-3.0 <https://opensource.org/licenses/AGPL-3.0>
+ *  @since    2015/10/30
+ *
+ *  profile load and C++ <-> QML wrappers
+ */
+
+
 #ifndef ICCOPEN_H
 #define ICCOPEN_H
 

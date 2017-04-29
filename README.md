@@ -1,6 +1,6 @@
 OpenICC Taxi DB QML
 ===================
-[![Issues](https://img.shields.io/github/issues-raw/OpenICC/taxi-db-browser.svg?style=flat-square)](https://github.com/OpenICC/taxi-db-browser/issues)
+[![Issues](https://img.shields.io/github/issues-raw/OpenICC/taxi-db-qml.svg?style=flat-square)](https://github.com/OpenICC/taxi-db-qml/issues)
 [![License](https://img.shields.io/badge/License-AGPL%203.0-blue.svg)](https://opensource.org/licenses/AGPL-3.0)
 
 ![](http://www.openicc.info/images/openicc-taxi-db-qml-mnft-tab-1.0.png)

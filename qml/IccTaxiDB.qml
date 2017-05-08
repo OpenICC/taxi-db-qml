@@ -213,6 +213,7 @@ ApplicationWindow {
     }
 
     // Take busy out of non UI function
+    property string timer_status_text_
     Timer {
         id: setBusyTimer
         triggeredOnStart: false
@@ -220,7 +221,8 @@ ApplicationWindow {
         onTriggered: {
             if(isbusy === false)
             {
-                statusLabel.text = qsTr("Busy")
+                timer_status_text_ = statusText
+                statusText = qsTr("Busy")
                 isbusy = true
             }
         }
@@ -233,11 +235,13 @@ ApplicationWindow {
             if(isbusy === true)
             {
                 isbusy = false
-                if(statusText.length)
-                    statusLabel.text = statusText
+                if(timer_status_text_.length)
+                    statusText = timer_status_text_
+                timer_status_text_ = ""
             }
         }
     }
+
 
     property string statusText: "Running..."
     statusBar: RowLayout {

@@ -26,10 +26,23 @@ Rectangle {
     implicitHeight: parent.height
     implicitWidth: parent.width
 
+    Image {
+        id: logoImage
+        width: parent.width
+        y: 10
+        horizontalAlignment: Image.AlignHCenter
+        fillMode: Image.PreserveAspectFit
+        source: (Qt.platform.os === "android") ? "qrc:/extras/images/logo_big.png" : "qrc:/extras/images/logo-color-src.svg"
+        sourceSize.width: 350
+        sourceSize.height: 350
+        height: 175
+    }
+
     TextArea { // our content
         id: textArea
+        y: logoImage.height + logoImage.y + 10
         width: parent.width
-        height: parent.height - font.pixelSize * 3 // keep some space for the button
+        height: parent.height - logoImage.height - font.pixelSize * 3 // keep some space for the button
 
         Accessible.name: "about text"
         backgroundVisible: false // keep the area visually simple

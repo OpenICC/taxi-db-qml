@@ -3,7 +3,7 @@
  *  OpenICC Taxi DB is a color profile DB browser.
  *
  *  @par Copyright:
- *            2015 (C) Kai-Uwe Behrmann
+ *            2015-2017 (C) Kai-Uwe Behrmann
  *            All Rights reserved.
  *
  *  @par License:
@@ -31,6 +31,13 @@ int main(int argc, char* argv[])
     app.setApplicationDisplayName(QString("ICC Taxi DB"));
     app.setApplicationVersion("1.0.0");
     app.setOrganizationName(QString("oyranos.com"));
+
+#ifdef Q_OS_ANDROID
+    QIcon icon(QStringLiteral(":/extras/images/logo.png"));
+#else
+    QIcon icon(QStringLiteral(":/extras/images/logo-color-src.svg"));
+#endif
+    app.setWindowIcon(icon);
 
     foreach (QScreen * screen, QGuiApplication::screens())
         screen->setOrientationUpdateMask(Qt::LandscapeOrientation | Qt::PortraitOrientation |

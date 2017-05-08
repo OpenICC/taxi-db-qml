@@ -237,6 +237,8 @@ ApplicationWindow {
                 isbusy = false
                 if(timer_status_text_.length)
                     statusText = timer_status_text_
+                else
+                    statusText = ""
                 timer_status_text_ = ""
             }
         }

@@ -3,7 +3,7 @@ OpenICC Taxi DB QML
 [![Issues](https://img.shields.io/github/issues-raw/OpenICC/taxi-db-qml.svg?style=flat-square)](https://github.com/OpenICC/taxi-db-qml/issues)
 [![License](https://img.shields.io/badge/License-AGPL%203.0-blue.svg)](https://opensource.org/licenses/AGPL-3.0)
 
-![](http://www.openicc.info/images/openicc-taxi-db-qml-mnft-tab-1.0.png)
+![](http://www.oyranos.org/images/logo-color-src.svg)
 
 A ICC color profile DB browser.
 
@@ -23,4 +23,6 @@ Building
 Supported are Qt Designer and qmake style builds.
 
 Open the pro file in Qt Designer, configure and add the desired kits.
+
+![](http://www.openicc.info/images/openicc-taxi-db-qml-mnft-tab-1.0.png)
 

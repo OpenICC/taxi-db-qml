@@ -51,6 +51,7 @@ Rectangle {
                 statusText = "Launching external app failed"
             unsetBusyTimer.start()
         }
+        onLinkHovered: (Qt.platform.os === "android") ? Qt.openUrlExternally(link) : statusText = link
     }
 
     property bool showJson: false

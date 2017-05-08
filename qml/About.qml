@@ -48,6 +48,8 @@ Rectangle {
             //QDesktopServices:openUrl(link)
             statusText = "opening adress externally"
         }
+        onLinkHovered: (Qt.platform.os === "android") ? Qt.openUrlExternally(link) : statusText = link
+
     }
 
     Action {

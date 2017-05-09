@@ -13,7 +13,13 @@ DISTFILES += \
     qml/ProfileView.qml \
     android/AndroidManifest.xml \
     android/res/values/libs.xml \
-    android/build.gradle
+    android/build.gradle \
+    android/res/drawable-hdpi/icon.png \
+    android/res/drawable-ldpi/icon.png \
+    android/res/drawable-mdpi/icon.png \
+    android/res/drawable-hdpi/icon_big.png \
+    android/res/drawable-ldpi/icon_big.png \
+    android/res/drawable-mdpi/icon_big.png \
 
 # bring browser in foreground on Android
 TARGET.CAPABILITY += SwEvent

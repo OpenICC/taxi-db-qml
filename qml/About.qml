@@ -32,7 +32,7 @@ Rectangle {
         y: 10
         horizontalAlignment: Image.AlignHCenter
         fillMode: Image.PreserveAspectFit
-        source: (Qt.platform.os === "android") ? "qrc:/extras/images/logo_big.png" : "qrc:/extras/images/logo-color-src.svg"
+        source: (Qt.platform.os === "android") ? "qrc:/extras/images/logo.png" : "qrc:/extras/images/logo-color-src.svg"
         sourceSize.width: 350
         sourceSize.height: 350
         height: 175
@@ -53,9 +53,10 @@ Rectangle {
         readOnly: true // obviously no edits
         text: "<html><head></head><body> <p align=\"center\">OpenICC Taxi DB Viewer<br \>Version " + ApplicationVersion + "<br \>" +
                       qsTr("Taxi ICC Device Color Profile Database Viewer") +
-                      "<br \>Copyright (c) 2015 Kai-Uwe Behrmann<br \>" +
+                      "<br \>Copyright (c) 2015-2017 Kai-Uwe Behrmann<br \>" +
                       qsTr("All Rights reserved.") +
-                      "<br \><a href=\"http://www.behrmann.name\">www.behrmann.name</p></body></html>"
+                      "<br \><a href=\"http://www.behrmann.name\">www.behrmann.name</a>" +
+                      "<br \><a href=\"https://github.com/OpenICC/taxi-db-qml\">Sources: github.com</a></p></body></html>"
         onLinkActivated: {
             Qt.openUrlExternally(link)
             //QDesktopServices:openUrl(link)

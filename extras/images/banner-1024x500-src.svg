@@ -32,7 +32,7 @@
      id="namedview409"
      showgrid="false"
      inkscape:zoom="1.1442148"
-     inkscape:cx="485.78115"
+     inkscape:cx="466.55399"
      inkscape:cy="250"
      inkscape:window-x="108"
      inkscape:window-y="0"
@@ -48,7 +48,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -25651,13 +25651,14 @@
        y1="249.76622"
        x2="726.25452"
        y2="249.76622"
-       gradientUnits="userSpaceOnUse" />
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1,0,0,1.1792442,0,0.23990753)" />
   </defs>
   <rect
-     style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#e0e0e0;fill-opacity:0.99027243;fill-rule:nonzero;stroke:none;stroke-width:0.40000001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
+     style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#e0e0e0;fill-opacity:0.99027243;fill-rule:nonzero;stroke:none;stroke-width:0.43437204;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
      id="rect186151"
      width="1023.5248"
-     height="502.20932"
+     height="592.22742"
      x="0.54622459"
      y="-1.3384423" />
   <text
@@ -25746,7 +25747,7 @@
          height="19.761503"
          x="1102.984"
          y="-66.992172" /></flowRegion><flowPara
-       id="flowPara188594"></flowPara></flowRoot>  <flowRoot
+       id="flowPara188594" /></flowRoot>  <flowRoot
      xml:space="preserve"
      id="flowRoot188596"
      style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:Elsie;font-style:normal;font-weight:normal;font-size:16px;line-height:25px;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:Elsie;font-stretch:normal;font-variant:normal"><flowRegion
@@ -25756,13 +25757,13 @@
          height="54.860943"
          x="592.14984"
          y="-124.36976" /></flowRegion><flowPara
-       id="flowPara188602"></flowPara></flowRoot>  <rect
+       id="flowPara188602" /></flowRoot>  <rect
      style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:#8c8c8c;fill-opacity:0.99027243;fill-rule:nonzero;stroke:none;stroke-width:0.41996017;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
      id="rect186395"
      width="520.21509"
      height="525.44116"
      x="268.94016"
-     y="532.02216"
+     y="600.22443"
      ry="260.10754" />
   <g
      id="g200449">
@@ -33188,10 +33189,10 @@
     </g>
   </g>
   <rect
-     style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:url(#linearGradient200502);fill-opacity:1;fill-rule:nonzero;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate;stroke:none"
+     style="color:#000000;clip-rule:nonzero;display:inline;overflow:visible;visibility:visible;opacity:1;isolation:auto;mix-blend-mode:normal;color-interpolation:sRGB;color-interpolation-filters:linearRGB;solid-color:#000000;solid-opacity:1;fill:url(#linearGradient200502);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.08593011;color-rendering:auto;image-rendering:auto;shape-rendering:auto;text-rendering:auto;enable-background:accumulate"
      id="rect186151-6"
      width="1023.5248"
-     height="502.20932"
+     height="592.22742"
      x="0.54622459"
      y="-1.3384399" />
   <g
@@ -33802,7 +33803,7 @@
        y="126.4231">Taxi DB Viewer</tspan></text>
   <g
      id="g188444"
-     transform="translate(-516.55194,511.59423)">
+     transform="translate(-536.55194,549.59423)">
     <path
        inkscape:connector-curvature="0"
        id="rect5719"
@@ -33818,7 +33819,7 @@
   </g>
   <g
      id="layer1-3-9"
-     transform="matrix(0.19636748,-3.6845117e-4,3.6845117e-4,0.19636748,884.62938,507.38821)"
+     transform="matrix(0.19636748,-3.6845117e-4,3.6845117e-4,0.19636748,884.62938,539.38821)"
      inkscape:transform-center-x="5.0264753"
      inkscape:transform-center-y="-8.28944">
     <g
@@ -34440,7 +34441,7 @@
   </g>
   <g
      id="g134447"
-     transform="matrix(1.1285845,0,0,1.1285845,-137.63797,422.47733)">
+     transform="matrix(1.1285845,0,0,1.1285845,-157.63797,460.47733)">
     <g
        transform="matrix(0.88499971,0,0,0.88499971,26.423374,27.754881)"
        id="g133093">
